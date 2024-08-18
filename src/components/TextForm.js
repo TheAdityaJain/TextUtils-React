@@ -44,18 +44,21 @@ export default function TextForm(props) {
             <br/>
             <h4>{props.heading} </h4>
             <div className ="mb-3">
-                <textarea className ="form-control" value={text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8" placeholder='Enter text here'></textarea>
+                <textarea className ="form-control" value={text} 
+                style={{backgroundColor: props.mode==='dark'?'#343a40':'white',
+                    color: props.mode==='dark'?'white':'dark'}}
+                    onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8" placeholder='Enter text here'></textarea>
             </div>
-            <button className={`btn btn-${props.theme} mx-1`} onClick={handleUpClick}>Convert in Uppercase</button>
-            <button className={`btn btn-${props.theme} mx-1`} onClick={handleLowClick}>Convert in Lowercase</button>
-            <button className={`btn btn-${props.theme} mx-1`} onClick={handleClear}>Clear</button>
-            <button className={`btn btn-${props.theme} mx-1`} onClick={handleCopyClick}>Copy</button><br/><br/>
+            <button disabled={text.length===0} className={`btn btn-${props.theme} mx-1 my-1`} onClick={handleUpClick}>Convert in Uppercase</button>
+            <button disabled={text.length===0} className={`btn btn-${props.theme} mx-1 my-1`} onClick={handleLowClick}>Convert in Lowercase</button>
+            <button disabled={text.length===0} className={`btn btn-${props.theme} mx-1 my-1`} onClick={handleClear}>Clear</button>
+            <button disabled={text.length===0} className={`btn btn-${props.theme} mx-1 my-1`} onClick={handleCopyClick}>Copy</button><br/><br/>
             <div className='container mb-3'>
                 <h5>Your Text Summary</h5>
-                <p>{text.split(" ").length - 1} words, {text.length} characters</p>
+                <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words, {text.length} characters</p>
                 <p>{ 0.08 * text.split(" ").length} minutes to read</p>
                 <h4>Preview</h4>
-                <p>{text}</p>
+                <p>{text.length>0?text:"Nothing to preview!!!"}</p>
             </div>
         </div>
         </>

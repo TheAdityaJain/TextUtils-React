@@ -37,14 +37,8 @@ function App() {
     }
   }
 
-  const toggleThemes = () => {
-    if (theme === 'primary' || theme === 'warning' || theme === 'success') {
-      setTheme('danger')
-    } else if (theme === 'primary' || theme === 'danger' || theme === 'success') {
-      setTheme('warning')
-    } else if (theme === 'primary' || theme === 'danger' || theme === 'warning') {
-      setTheme('success')
-    }
+  const toggleThemes = (cls) => {
+    setTheme(cls);
   }
   
   return (
@@ -54,8 +48,8 @@ function App() {
         <Alert alert={alert}/>
         <div className='container'>
           <Routes> {/* Updated from Switch to Routes */}
-            <Route exact path="/about" element={<About />} />
-            <Route exact path="/TextUtils-React" element={<TextForm heading='Enter the text to be analyzed' showAlert={showAlert} theme={theme} mode={mode}/>} />
+            <Route exact path="/about" element={<About mode={mode} />} />
+            <Route exact path="/" element={<TextForm heading='Enter the text to be analyzed' showAlert={showAlert} theme={theme} mode={mode}/>} />
           </Routes>
         </div>
       </Router>
