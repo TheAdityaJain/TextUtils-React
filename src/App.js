@@ -55,7 +55,7 @@ function App() {
         <div className='container'>
           <Routes> {/* Updated from Switch to Routes */}
             <Route exact path="/about" element={<About />} />
-            <Route exact path="/" element={<TextForm heading='Enter the text to be analyzed' showAlert={showAlert} theme={theme} mode={mode}/>} />
+            <Route exact path="/TextUtils-React" element={<TextForm heading='Enter the text to be analyzed' showAlert={showAlert} theme={theme} mode={mode}/>} />
           </Routes>
         </div>
       </Router>
