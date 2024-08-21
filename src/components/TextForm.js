@@ -30,6 +30,13 @@ export default function TextForm(props) {
         setText(newText);
         props.showAlert("Text Cleared!!!","success")
     }
+
+    const capitalizeFirstLetter = () => {
+        let newText = text.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");;
+        setText(newText);
+        props.showAlert("Text Transformed","success")
+    };
+
     //handling events
     const handleOnChange = (event)=>{
         //console.log("On change");
@@ -52,6 +59,7 @@ export default function TextForm(props) {
             <button disabled={text.length===0} className={`btn btn-${props.theme} mx-1 my-1`} onClick={handleUpClick}>Convert in Uppercase</button>
             <button disabled={text.length===0} className={`btn btn-${props.theme} mx-1 my-1`} onClick={handleLowClick}>Convert in Lowercase</button>
             <button disabled={text.length===0} className={`btn btn-${props.theme} mx-1 my-1`} onClick={handleClear}>Clear</button>
+            <button disabled={text.length===0} className={`btn btn-${props.theme} mx-1 my-1`} onClick={capitalizeFirstLetter}>Capitalize</button>
             <button disabled={text.length===0} className={`btn btn-${props.theme} mx-1 my-1`} onClick={handleCopyClick}>Copy</button><br/><br/>
             <div className='container mb-3'>
                 <h5>Your Text Summary</h5>
